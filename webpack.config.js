@@ -9,7 +9,22 @@ module.exports = {
 		filename: 'bundle.js',
 	},
 	resolve: {
-		extensions: ['', '.js'],
+		extensions: ['', '.js', '.jsx'],
+	},
+	module: {
+		loaders: [
+			{
+				loader: 'babel',
+				include: [
+					path.resolve(__dirname, 'src/client'),
+				],
+				test: /\.jsx?$/,
+				query: {
+					plugins: ['transform-runtime'],
+					presets: ['es2015', 'react'],
+				},
+			},
+		],
 	},
 	devtool: 'source-map',
 };
