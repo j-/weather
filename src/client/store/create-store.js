@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import reducer from './';
 
-const devtools = window.devToolsExtension ?
+const devtools = typeof window !== 'undefined' && window.devToolsExtension ?
 	window.devToolsExtension() :
 	(i) => i;
 

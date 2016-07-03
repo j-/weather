@@ -15,11 +15,18 @@ export const setLatLon = ({ lat, lon }) => ({
 	lon,
 });
 
+export const notifyFetch = () => ({
+	type: POSITION_FETCH,
+});
+
+export const notifyError = (message = 'An unknown error occurred') => ({
+	type: POSITION_ERROR,
+	message,
+});
+
 export const requestLatLon = () => (dispatch) => {
-	// No need for action creator
-	dispatch({
-		type: POSITION_FETCH,
-	});
+	// Notify app that location is being requested
+	dispatch(notifyFetch());
 	// Prompt user for location data
 	getCurrentPosition()
 		.then((position) => {
@@ -27,9 +34,6 @@ export const requestLatLon = () => (dispatch) => {
 			dispatch(setLatLon(coords));
 		})
 		.catch((err) => {
-			dispatch({
-				type: POSITION_ERROR,
-				message: err.message,
-			});
+			dispatch(notifyError(err.message));
 		});
 };

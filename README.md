@@ -12,6 +12,12 @@ $ npm install && npm start
 
 Then open [localhost:8080](http://localhost:8080/).
 
+## Testing
+
+```sh
+$ npm install && npm test
+```
+
 ## License
 
 MIT

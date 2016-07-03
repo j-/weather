@@ -19,10 +19,6 @@ module.exports = {
 					path.resolve(__dirname, 'src/client'),
 				],
 				test: /\.jsx?$/,
-				query: {
-					plugins: ['transform-runtime'],
-					presets: ['es2015', 'react'],
-				},
 			},
 		],
 	},

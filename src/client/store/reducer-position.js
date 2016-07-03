@@ -6,7 +6,7 @@ import {
 	POSITION_ERROR,
 } from './types';
 
-const coord = (type) => (state = 0, action) => {
+const coord = (type) => (state = null, action) => {
 	switch (action.type) {
 		case POSITION_SET:
 			return action[type];
@@ -19,8 +19,6 @@ const locationValid = (state = false, action) => {
 	switch (action.type) {
 		case POSITION_SET:
 			return true;
-		case POSITION_ERROR:
-			return false;
 		default:
 			return state;
 	}

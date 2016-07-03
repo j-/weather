@@ -1,8 +1,10 @@
-const geolocation = navigator.geolocation;
+const geolocation = typeof navigator !== 'undefined' && navigator.geolocation;
 
 export const getCurrentPosition = () => (
 	new Promise((resolve, reject) => (
-		geolocation.getCurrentPosition(resolve, reject)
+		geolocation ?
+			geolocation.getCurrentPosition(resolve, reject) :
+			reject(new Error('Geolocation not supported'))
 	))
 );
 
