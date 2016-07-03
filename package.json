@@ -4,6 +4,7 @@
   "description": "Current weather conditions at your location",
   "main": "dist/index.html",
   "scripts": {
+    "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
