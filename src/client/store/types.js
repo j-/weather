@@ -1,0 +1,5 @@
+export const POSITION_FETCH = 'POSITION_FETCH';
+
+export const POSITION_SET = 'POSITION_SET';
+
+export const POSITION_ERROR = 'POSITION_ERROR';
