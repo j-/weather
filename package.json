@@ -2,7 +2,7 @@
   "name": "weather",
   "version": "0.0.0",
   "description": "Current weather conditions at your location",
-  "main": "dist/index.html",
+  "main": "index.js",
   "scripts": {
     "build": "webpack",
     "build:prod": "cross-env NODE_ENV=production webpack -p",
