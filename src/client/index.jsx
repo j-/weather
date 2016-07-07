@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './components/app';
 import { Provider } from 'react-redux';
 import createStore from './store/create-store';
-import { isLocationValid } from './store';
 import { requestLatLon } from './store/actions';
 import { saveState, loadState } from './local-storage';
 
@@ -18,9 +17,7 @@ ReactDOM.render(
 	document.getElementById('app')
 );
 
-if (!isLocationValid(store.getState())) {
-	store.dispatch(requestLatLon());
-}
+store.dispatch(requestLatLon());
 
 // Persist state to local storage
 store.subscribe(() => {
