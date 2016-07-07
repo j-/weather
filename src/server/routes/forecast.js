@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const request = require('request');
 
 const APIKEY = process.env.APIKEY;
 
@@ -14,10 +15,9 @@ app.get('/forecast/:nonce/:lat,:lon', (req, res) => {
 		throw new Error('Required fields `lat` and `lon` not found');
 	}
 
-	res.send({
-		lat,
-		lon,
-	});
+	request.get(
+		`https://api.forecast.io/forecast/${APIKEY}/${lat},${lon}`
+	).pipe(res);
 });
 
 module.exports = app;
