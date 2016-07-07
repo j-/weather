@@ -1,15 +1,27 @@
 const path = require('path');
+const express = require('express');
 const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+
 const config = require('../../webpack.config.js');
-
-config.entry.bundle.unshift('webpack-dev-server/client?http://localhost:8080/');
-config.output.path = '/';
-
 const compiler = webpack(config);
-
-const server = new WebpackDevServer(compiler, {
+const middleware = webpackDevMiddleware(compiler, {
 	contentBase: path.resolve(__dirname, '../../dist'),
+	publicPath: '/',
+	lazy: false,
+	stats: {
+		colors: true,
+	},
 });
 
-server.listen(8080);
+const app = express();
+
+app.use(
+	express.static(
+		path.resolve(__dirname, '../../dist')
+	)
+);
+
+app.use(middleware);
+
+app.listen(8080);
