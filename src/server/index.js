@@ -3,6 +3,7 @@ const express = require('express');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 
+const routes = require('./routes');
 const config = require('../../webpack.config.js');
 const compiler = webpack(config);
 const middleware = webpackDevMiddleware(compiler, {
@@ -23,5 +24,6 @@ app.use(
 );
 
 app.use(middleware);
+app.use(routes);
 
 app.listen(8080);
